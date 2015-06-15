@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'examples',
     'haystack',
     'debug_toolbar',
+    'inventory'
 )
 
 MIDDLEWARE_CLASSES = (
