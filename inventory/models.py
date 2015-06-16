@@ -17,7 +17,7 @@ class Inventory(models.Model):
     primary = ('warehouse_no', 'goods_no')
 
     def __unicode__(self):
-        return '%s,%s' % (self.warehouse_id, self.goods_id)
+        return '%s,%s' % (self.warehouse_no, self.goods_no)
 
     def get_absolute_url(self):
         pass
@@ -51,7 +51,7 @@ class Goods(models.Model):
         verbose_name_plural = '货物信息管理'
 
     def __unicode__(self):
-        return '%d' % self.id
+        return '%d' % self.goods_no
 
     def get_absolute_url(self):
         pass

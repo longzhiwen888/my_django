@@ -36,7 +36,11 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = (
-    'grappelli',
+    'inventory',
+    # 'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
+    # 'bootstrap_admin',
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +50,7 @@ INSTALLED_APPS = (
     'examples',
     'haystack',
     'debug_toolbar',
-    'inventory'
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -131,35 +135,39 @@ HAYSTACK_CONNECTIONS = {
 },
 }
 
+'''grappelli相关配置开始'''
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "django.contrib.auth.context_processors.auth",
+#     "django.core.context_processors.debug",
+#     "django.core.context_processors.i18n",
+#     "django.core.context_processors.media",
+#     "django.core.context_processors.static",
+#     "django.core.context_processors.tz",
+#     "django.contrib.messages.context_processors.messages"
+# )
+#
+# ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
+#
+#
+# DEBUG_TOOLBAR_PANELS = [
+#         'debug_toolbar.panels.versions.VersionsPanel',
+#         'debug_toolbar.panels.timer.TimerPanel',
+#         'debug_toolbar.panels.settings.SettingsPanel',
+#         'debug_toolbar.panels.headers.HeadersPanel',
+#         'debug_toolbar.panels.request.RequestPanel',
+#         'debug_toolbar.panels.sql.SQLPanel',
+#         'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+#         'debug_toolbar.panels.templates.TemplatesPanel',
+#         'debug_toolbar.panels.cache.CachePanel',
+#         'debug_toolbar.panels.signals.SignalsPanel',
+#         'debug_toolbar.panels.logging.LoggingPanel',
+#         'debug_toolbar.panels.redirects.RedirectsPanel',
+#     ]
+# GRAPPELLI_ADMIN_TITLE = u'Django练习用的后台管理系统'
+# GRAPPELLI_SWITCH_USER = True
+'''grappelli相关配置结束'''
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages"
-)
-
-ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"
-
-
-DEBUG_TOOLBAR_PANELS = [
-        'debug_toolbar.panels.versions.VersionsPanel',
-        'debug_toolbar.panels.timer.TimerPanel',
-        'debug_toolbar.panels.settings.SettingsPanel',
-        'debug_toolbar.panels.headers.HeadersPanel',
-        'debug_toolbar.panels.request.RequestPanel',
-        'debug_toolbar.panels.sql.SQLPanel',
-        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-        'debug_toolbar.panels.templates.TemplatesPanel',
-        'debug_toolbar.panels.cache.CachePanel',
-        'debug_toolbar.panels.signals.SignalsPanel',
-        'debug_toolbar.panels.logging.LoggingPanel',
-        'debug_toolbar.panels.redirects.RedirectsPanel',
-    ]
-
+'''DEBUG_TOOLBAR 配置开始'''
 DEBUG_TOOLBAR_PATCH_SETTINGS = True
 INTERNAL_IPS = ('127.0.0.1', )
 
@@ -167,3 +175,17 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'JQUERY_URL': 'http://127.0.0.1:8000/static/admin/js/jquery.js'
 }
+'''DEBUG_TOOLBAR 配置结束'''
+
+
+
+'''django_admin_bootstrapped配置开始'''
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
+from django.contrib import messages
+
+MESSAGE_TAGS = {
+            messages.SUCCESS: 'alert-success success',
+            messages.WARNING: 'alert-warning warning',
+            messages.ERROR: 'alert-danger error'
+}
+'''django_admin_bootstrapped配置结束'''
