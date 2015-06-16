@@ -1,7 +1,6 @@
 #django项目部署步骤:
-1.在你要放置项目的目录执行  django-admin.py startproject mysite 创建项目
-2.在开始项目时，先要更改settings.py中的  TIME_ZONE 为 'Asia/Shanghai'，
-USE_TZ 为 False
+1.在你要放置项目的目录执行  django-admin.py startproject mysite 创建项目::
+2.在开始项目时，先要更改settings.py中的  TIME_ZONE 为 'Asia/Shanghai'，USE_TZ 为 False::
 3. django默认会启用auto-reloader，所以不想用的时候要加上--noreload，即：
 python manage.py runserver 0.0.0.0:8000 --noreload
 
