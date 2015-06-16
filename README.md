@@ -3,7 +3,7 @@
 
 2.在开始项目时，先要更改settings.py中的  TIME_ZONE 为 'Asia/Shanghai'，USE_TZ 为 False
 
-3. django默认会启用auto-reloader，所以不想用的时候要加上--noreload，即：python manage.py runserver 0.0.0.0:8000 --noreload
+3. .. code-block:: python 关于 django默认会启用auto-reloader，所以不想用的时候要加上--noreload，即：python manage.py runserver 0.0.0.0:8000 --noreload
 
 启动httpserver时会看到警告,"You have unapplied migrations; your app may not work properly until they are applied.
 Run 'python manage.py migrate' to apply them."
