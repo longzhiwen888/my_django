@@ -13,6 +13,7 @@ class Inventory(models.Model):
         unique_together = ('warehouse_no', 'goods_no')
         verbose_name = '库存'
         verbose_name_plural = '库存管理'
+        app_label = 'inventory'
 
     primary = ('warehouse_no', 'goods_no')
 
@@ -32,6 +33,7 @@ class Warehouse(models.Model):
     class Meta:
         verbose_name = '仓库'
         verbose_name_plural = '仓库信息管理'
+        app_label = 'inventory'
 
     def __unicode__(self):
         return '%d' % self.id
@@ -49,6 +51,7 @@ class Goods(models.Model):
     class Meta:
         verbose_name = '货物'
         verbose_name_plural = '货物信息管理'
+        app_label = 'inventory'
 
     def __unicode__(self):
         return '%d' % self.goods_no
@@ -67,6 +70,7 @@ class Supplier(models.Model):
     class Meta:
         verbose_name = '供应商'
         verbose_name_plural = '供应商信息管理'
+        app_label = 'inventory'
 
     def __unicode__(self):
         return '%d' % self.id
@@ -83,6 +87,7 @@ class Manager(models.Model):
     class Meta:
         verbose_name = '管理员'
         verbose_name_plural = '管理员信息管理'
+        app_label = 'inventory'
 
     def __unicode__(self):
         return '%d' % self.id
@@ -101,6 +106,7 @@ class OutboundOrder(models.Model):
     class Meta:
         verbose_name = '出库单'
         verbose_name_plural = '出库单信息管理'
+        app_label = 'inventory'
 
     def __unicode__(self):
         return '%d' % self.id
@@ -121,6 +127,7 @@ class InboundOrder(models.Model):
     class Meta:
         verbose_name = '入库单'
         verbose_name_plural = '入库单信息管理'
+        app_label = 'inventory'
 
     def __unicode__(self):
         return '%d' % self.id

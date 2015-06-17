@@ -20,6 +20,7 @@ class Document(models.Model):
     class Meta:
         verbose_name = '文章'   # 修改从管理级'产品中心'进入后的页面显示，显示为'产品'
         verbose_name_plural = '文章管理'  # 修改管理级页面显示
+        app_label = 'examples'
 
 
 class Comment(models.Model):
@@ -33,6 +34,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = '评论'  # 修改从管理级'产品中心'进入后的页面显示，显示为'产品'
         verbose_name_plural = '评论管理'   # 修改管理级页面显示
+        app_label = 'examples'
 
 
 class Tag(models.Model):
@@ -48,3 +50,4 @@ class Tag(models.Model):
     class Meta:
         verbose_name = '标签'  # 修改从管理级'产品中心'进入后的页面显示，显示为'产品'
         verbose_name_plural = '标签管理'   # 修改管理级页面显示
+        app_label = 'examples'

@@ -48,8 +48,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'examples',
-    'haystack',
-    'debug_toolbar',
+    # 'haystack',
+    # 'debug_toolbar',
 
 )
 
@@ -62,7 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'mydjango.urls'
@@ -128,12 +128,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 import os
-HAYSTACK_CONNECTIONS = {
-'default': {
-    'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-    'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
-},
-}
+
 
 '''grappelli相关配置开始'''
 # TEMPLATE_CONTEXT_PROCESSORS = (
@@ -175,9 +170,13 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'JQUERY_URL': 'http://127.0.0.1:8000/static/admin/js/jquery.js'
 }
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
 '''DEBUG_TOOLBAR 配置结束'''
-
-
 
 '''django_admin_bootstrapped配置开始'''
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
