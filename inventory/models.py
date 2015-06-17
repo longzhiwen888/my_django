@@ -36,7 +36,7 @@ class Warehouse(models.Model):
         app_label = 'inventory'
 
     def __unicode__(self):
-        return '%d' % self.id
+        return '%s' % self.id
 
     def get_absolute_url(self):
         pass
@@ -54,7 +54,7 @@ class Goods(models.Model):
         app_label = 'inventory'
 
     def __unicode__(self):
-        return '%d' % self.goods_no
+        return '%s' % self.goods_no
 
     def get_absolute_url(self):
         pass
@@ -73,7 +73,7 @@ class Supplier(models.Model):
         app_label = 'inventory'
 
     def __unicode__(self):
-        return '%d' % self.id
+        return '%s' % self.id
 
     def get_absolute_url(self):
         pass
@@ -90,7 +90,7 @@ class Manager(models.Model):
         app_label = 'inventory'
 
     def __unicode__(self):
-        return '%d' % self.id
+        return '%s' % self.id
 
     def get_absolute_url(self):
         pass
@@ -109,7 +109,7 @@ class OutboundOrder(models.Model):
         app_label = 'inventory'
 
     def __unicode__(self):
-        return '%d' % self.id
+        return '%s' % self.id
 
     def get_absolute_url(self):
         pass
@@ -130,7 +130,7 @@ class InboundOrder(models.Model):
         app_label = 'inventory'
 
     def __unicode__(self):
-        return '%d' % self.id
+        return '%s' % self.id
 
     def get_absolute_url(self):
         pass

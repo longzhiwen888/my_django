@@ -7,6 +7,7 @@ from django.contrib.admin.apps import AdminConfig as _AdminConfig
 from django.apps import AppConfig
 
 from inventory import models
+from django.db.models import Model as DbModel
 
 
 class AuthConfig(_AuthConfig):
@@ -28,11 +29,6 @@ class InventoryInline(admin.TabularInline):
     model = models.Inventory
 
 
-def init_vars_decorator(cls):
-    cls.init_vars()
-    return cls
-
-
 class BaseModel(admin.ModelAdmin):
     list_display = None
     search_fields = None
@@ -52,49 +48,23 @@ class BaseModel(admin.ModelAdmin):
         return result
 
     @classmethod
-    def init_vars(cls):
-        model_name = cls.__name__.replace('Admin', '')
-        cls.model_obj = getattr(models, model_name)
+    def create_sub_class(cls, model_class):
+        admin_class_name = model_class.__name__ + 'Admin'
+        exec 'class %s(BaseModel): pass' % admin_class_name
+        sub_class = locals().get(admin_class_name)
+        sub_class.init_vars(model_class)
+        return sub_class
+
+    @classmethod
+    def init_vars(cls, model_class):
         cls.list_display = [_.name for _ in
-                            cls.model_obj._meta.fields]
+                            model_class._meta.fields]
         cls.search_fields = cls.list_display
 
-
-@init_vars_decorator
-class InventoryAdmin(BaseModel):
-    pass
-
-
-@init_vars_decorator
-class WarehouseAdmin(BaseModel):
-    pass
-
-
-@init_vars_decorator
-class GoodsAdmin(BaseModel):
-    pass
-
-
-@init_vars_decorator
-class SupplierAdmin(BaseModel):
-    pass
-
-@init_vars_decorator
-class ManagerAdmin(BaseModel):
-    pass
-
-@init_vars_decorator
-class OutboundOrderAdmin(BaseModel):
-    pass
-
-@init_vars_decorator
-class InboundOrderAdmin(BaseModel):
-    pass
-
-admin.site.register(models.Inventory, InventoryAdmin)
-admin.site.register(models.Warehouse, WarehouseAdmin)
-admin.site.register(models.Goods, GoodsAdmin)
-admin.site.register(models.Supplier, SupplierAdmin)
-admin.site.register(models.Manager, ManagerAdmin)
-admin.site.register(models.OutboundOrder, OutboundOrderAdmin)
-admin.site.register(models.InboundOrder, InboundOrderAdmin)
+for model_name, model_class in models.__dict__.items():
+    try:
+        if issubclass(model_class, DbModel):
+            sub_class = BaseModel.create_sub_class(model_class)
+            admin.site.register(model_class, sub_class)
+    except:
+        pass
